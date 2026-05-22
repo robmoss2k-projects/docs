@@ -1,0 +1,22 @@
+---
+name: Docs Formatting
+
+"on":
+  push:
+  pull_request:
+
+jobs:
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check docs formatting
+        run: npx prettier --check "**/*.{json,md,mdx}"
