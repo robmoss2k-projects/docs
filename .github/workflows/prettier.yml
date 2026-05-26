@@ -5,6 +5,13 @@ name: Docs Formatting
   push:
   pull_request:
 
+concurrency:
+  group: docs-formatting
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   prettier:
     name: Prettier
